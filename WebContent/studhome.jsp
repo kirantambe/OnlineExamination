@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,13 +10,12 @@
 	href="bootstrap/css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="common-style.css">
 <style type="text/css">
-	
 </style>
 </head>
 <body>
 	<!--Header-->
 	<%
-		if(session.getAttribute("uname")==null)
+		if (session.getAttribute("uname") == null)
 			response.sendRedirect("index.html#loginwarning");
 	%>
 	<nav class="navbar navbar-default navbar-inverse" role="navigation">
@@ -50,26 +49,15 @@
 		<!--Login Form-->
 		<br> <br> <br>
 		<div class="row">
-			<h2 class="col-md-6 col-md-offset-3">Login</h2>
+			<h2 class="col-md-6 col-md-offset-3 text-center">Select an option</h2>
 		</div>
 		<div class="row">
 			<div class="col-md-6 col-md-offset-3">
-				<form action="LoginServlet" method="post">
-					<div class="form-group">
-						<label for="uname">Username </label> <input type="text" id="uname"
-							name="uname" class="form-control" placeholder="MCA--- / FAC---" />
-					</div>
-					<div class="form-group">
-						<label for="pass">Password </label> <input type="password"
-							name="pass" id="pass" class="form-control" placeholder="password" />
-					</div>
-					<span class="text-danger" id="loginwarning">Invalid username or password</span>
-					<div class="form-group text-center">
-						<input type="submit" value="Submit" class="btn btn-primary " /> <input
-							type="reset" value="Reset" class="btn btn-default " />
-					</div>
-					
-				</form>
+				<div class="list-group">
+					<a href="#" class="list-group-item"> Start Exam </a>
+					<a href="#" class="list-group-item"> View Result </a> 
+				</div>
+
 			</div>
 		</div>
 	</div>
