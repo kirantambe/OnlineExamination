@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,19 +10,14 @@
 	href="bootstrap/css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="common-style.css">
 <style type="text/css">
-	#loginwarning,#invlid{
-		display:none;
-	}
-	#loginwarning:target{
-		display:block;
-	}
-	#invalid:target{
-		display:block;
-	}
 </style>
 </head>
 <body>
 	<!--Header-->
+	<%
+		if (session.getAttribute("uname") == null)
+			response.sendRedirect("index.html#loginwarning");
+	%>
 	<nav class="navbar navbar-default navbar-inverse" role="navigation">
 		<div class="container-fluid">
 			<!-- Brand and toggle get grouped for better mobile display -->
@@ -39,6 +36,7 @@
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="#">Welcome Guest</a></li>
+					<li><a href="#">Logout</a></li>
 				</ul>
 			</div>
 			<!-- /.navbar-collapse -->
@@ -51,26 +49,22 @@
 		<!--Login Form-->
 		<br> <br> <br>
 		<div class="row">
-			<h2 class="col-md-6 col-md-offset-3">Login</h2>
+			<h2 class="col-md-6 col-md-offset-3 text-muted">Paste Instructions and Questions</h2>
 		</div>
 		<div class="row">
 			<div class="col-md-6 col-md-offset-3">
-				<form action="LoginServlet" method="post">
-				<span class="text-danger" id="loginwarning">Please login first.</span>
+				<form action="ScheduleExamServlet" method="post" enctype="multipart/form-data">
 					<div class="form-group">
-						<label for="uname">Username </label> <input type="text" id="uname"
-							name="uname" class="form-control" placeholder="MCA--- / FAC---" />
+						<label for="instruction"  class="text-muted">Instructions:</label> 
+						 <textarea name="instructions" rows="10" cols="10" id="instruction" class="form-control"></textarea> 
 					</div>
 					<div class="form-group">
-						<label for="pass">Password </label> <input type="password"
-							name="pass" id="pass" class="form-control" placeholder="password" />
+					<label for="file" class="text-muted">Upload Slips:</label>
+					<input type="file" id="file" class="form-control" name="fileupload" multiple/>					
 					</div>
-					<span class="text-danger" id="invalid">Invalid username or password</span>
-					<div class="form-group text-center">
-						<input type="submit" value="Submit" class="btn btn-primary " /> <input
-							type="reset" value="Reset" class="btn btn-default " />
-					</div>
-					
+					<div class="form-group">
+					<input type="submit" value="Submit"/>					
+					</div>				
 				</form>
 			</div>
 		</div>
@@ -83,7 +77,7 @@
 					href="#">Disclaimer</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a
 					href="#">Feedback</a>
 			</div>
-		</div>
+		</div>	
 	</footer>
 </body>
 </html>

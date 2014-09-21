@@ -58,6 +58,22 @@ public class LoginServlet extends HttpServlet {
 			}
 
 		}
+		else if(uname.contains("FAC"))
+		{
+			/*
+			 *  Code to check uname and pass in database 
+			 */
+			userValid=true;
+			if(userValid)
+			{
+				session.setAttribute("uname",uname);
+				response.sendRedirect("fachome.jsp");
+			}
+			else
+			{
+				response.sendRedirect("index.html#invlaid");
+			}
+		}
 	}
 
 }
