@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1" import="java.io.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -49,15 +49,26 @@
 		<!--Login Form-->
 		<br> <br> <br>
 		<div class="row">
-			<h2 class="col-md-6 col-md-offset-3 text-center">Select an option</h2>
-		</div>
-		<div class="row">
 			<div class="col-md-6 col-md-offset-3">
-				<div class="list-group">
-					<a href="instructions.jsp" class="list-group-item"> Start Exam </a>
-					<a href="showresults.jsp" class="list-group-item"> View Result </a> 
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">Instructions</h3>
+					</div>
+					<div class="panel-body">
+						<%
+							FileReader fr = new FileReader("d://examdata//instructions.txt");
+							BufferedReader br = new BufferedReader(fr);
+							String s;
+							while ((s = br.readLine()) != null) {
+								out.println(s);
+							}
+							fr.close();
+						%>
+					</div>
 				</div>
-
+				<div class="text-center">
+					<a href="" class="btn btn-primary">Start Test</a>
+				</div>
 			</div>
 		</div>
 	</div>

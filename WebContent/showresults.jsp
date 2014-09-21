@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1" import="java.io.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,8 +15,9 @@
 <body>
 	<!--Header-->
 	<%
-		if (session.getAttribute("uname") == null)
+		if (session.getAttribute("uname") == null) {
 			response.sendRedirect("index.html#loginwarning");
+		}
 	%>
 	<nav class="navbar navbar-default navbar-inverse" role="navigation">
 		<div class="container-fluid">
@@ -47,18 +48,36 @@
 	<!--MainContent-->
 	<div class="container" id="main-content">
 		<!--Login Form-->
+		<%
+			ServletContext context = request.getSession().getServletContext();
+			String showResults = (String) context.getAttribute("showResults");
+			if (showResults!=null && showResults.equals("true")) {
+		%>
 		<br> <br> <br>
 		<div class="row">
-			<h2 class="col-md-6 col-md-offset-3 text-center">Select an option</h2>
-		</div>
-		<div class="row">
 			<div class="col-md-6 col-md-offset-3">
-				<div class="list-group">
-					<a href="instructions.jsp" class="list-group-item"> Start Exam </a>
-					<a href="showresults.jsp" class="list-group-item"> View Result </a> 
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">Results</h3>
+					</div>
+					<div class="panel-body">results table</div>
 				</div>
-
+				<div class="text-center">
+					<a href="" class="btn btn-primary">Start Test</a>
+				</div>
 			</div>
+			<%
+				} else {
+			%>
+			
+			<div class="col-md-6 col-md-offset-3">
+				<p class="bg-danger text-center">Results have not been declared yet. Please
+				try again after some time.</p>
+			</div>
+			
+			<%
+				}
+			%>
 		</div>
 	</div>
 	<!--Footer-->
