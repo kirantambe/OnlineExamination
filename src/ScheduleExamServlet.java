@@ -53,8 +53,9 @@ public class ScheduleExamServlet extends HttpServlet {
 						}
 					}
 				}
-
-				out.println("File uploaded sucessfully");
+				
+				//out.println("File uploaded sucessfully");
+				response.sendRedirect("successfullupload.html");
 			} catch (Exception ex) {
 				out.println("File upload Failed");
 				out.println(ex);

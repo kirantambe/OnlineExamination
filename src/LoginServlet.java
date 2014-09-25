@@ -45,10 +45,7 @@ public class LoginServlet extends HttpServlet {
 		String pass = request.getParameter("pass");
 		HttpSession session = request.getSession(true);
 		boolean userValid = false;
-		if (uname.contains("MCA")) {
-			/*
-			 * Code to check uname and pass in database
-			 */
+		if (uname.contains("MCA")) {			
 			userValid = true;
 			if (userValid) {
 				session.setAttribute("uname", uname);
